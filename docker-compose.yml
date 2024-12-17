@@ -1,0 +1,21 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80" # Map React app to port 3000
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000" # Map Node.js server to port 5000
+    env_file:
+      - ./backend/.env # Load .env file
+    volumes:
+      - ./backend:/app # Sync backend code for local development
+      - /app/node_modules
