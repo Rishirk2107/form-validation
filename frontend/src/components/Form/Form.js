@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import validation from '../utils/validation';
+import validation from '../../utils/validation';
 import axios from 'axios';
+import './Form.css';
 
 const Form=()=>{
     const initializeForm={
@@ -56,7 +57,7 @@ const Form=()=>{
 
 
         try {
-            const response = await axios.post("http://13.201.101.104:5000/employees", formData);
+            const response = await axios.post("http://localhost:5000/employees", formData);
             console.log("Response received:", response); 
             setSuccessMessage("Form submitted successfully!");
             setFormData(initializeForm);
